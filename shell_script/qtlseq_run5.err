@@ -1,0 +1,5 @@
+trimmomatic/0.39 loaded, see 'module help trimmomatic/0.39' for more information.
+bcftools/1.20: When using any auxiliary scripts, load a python module such as python/3.9.5
+bcftools/1.20: If using plot-vcfstats, also load a texlive module such as texlive/2023-08-14
+!!WARNING!! You can use up to 20 threads. This program will use 20 threads.
+/var/spool/slurmd/job47242957/slurm_script: line 30: --mem: command not found

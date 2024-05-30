@@ -1,0 +1,30 @@
+[QTL-seq:2024-05-24 23:22:32] start to run QTL-seq.
+[QTL-seq:2024-05-24 23:22:32] maximum number of threads which you can use is up to 20.
+[QTL-seq:2024-05-24 23:22:34] start to index reference fasta.
+[QTL-seq:2024-05-24 23:32:16] indexing of reference successfully finished.
+[QTL-seq:2024-05-24 23:32:16] start to align reads of parent.0000 by BWA.
+[QTL-seq:2024-05-25 14:34:10] alignment parent.0000 successfully finished.
+[QTL-seq:2024-05-25 14:34:10] start to align reads of parent.0001 by BWA.
+[QTL-seq:2024-05-26 02:52:48] alignment parent.0001 successfully finished.
+[QTL-seq:2024-05-26 02:52:48] start to align reads of bulk1.0000 by BWA.
+[QTL-seq:2024-05-26 14:52:52] alignment bulk1.0000 successfully finished.
+[QTL-seq:2024-05-26 14:52:52] start to align reads of bulk2.0000 by BWA.
+[QTL-seq:2024-05-27 02:23:17] alignment bulk2.0000 successfully finished.
+[QTL-seq:2024-05-27 02:23:17] start to merge BAMs.
+[QTL-seq:2024-05-27 04:47:52] merging process successfully finished.
+[QTL-seq:2024-05-27 04:47:52] start to call variants.
+[QTL-seq:2024-05-27 05:33:58] variant calling successfully finished.
+[QTL-seq:2024-05-27 05:33:58] start to index VCF.
+[QTL-seq:2024-05-27 05:34:03] indexing VCF successfully finished.
+[QTL-seq:2024-05-27 05:34:10] start to run QTL-plot.
+[QTL-seq:2024-05-27 05:34:10] maximum number of threads which you can use is up to 20.
+!!WARNING!! You can use up to 20 threads. This program will use 20 threads.
+[QTL-seq:2024-05-27 05:34:10] start to calculate SNP-index.
+!!WARNING!! Number of replicates for simulation is not enough to consider multiple testing correction. Therefore, the highest SNP-index and the second highest SNP-index were selected for p99 and p95, respectively.
+[QTL-seq:2024-05-27 05:42:59] SNP-index successfully finished.
+[QTL-seq:2024-05-27 05:42:59] start to smooth SNP-index.
+[QTL-seq:2024-05-27 05:43:05] smoothing process successfully finished.
+[QTL-seq:2024-05-27 05:43:05] plotting now...
+[QTL-seq:2024-05-27 05:43:28] QTL-plot successfully finished.
+[QTL-seq:2024-05-27 05:43:28] QTL-seq successfully finished.
+
