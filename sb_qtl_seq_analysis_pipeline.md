@@ -1,11 +1,22 @@
 We need conda environment or manual installation to run the qtlseq analysis pipeline
-1. Log in to Uppmax
-2. check the envirionment
- conda env list
-3. try to install qtlseq 
+# 1. Log in to Uppmax
+```
+ssh userid@rackham.uppmax.uu.se
+```
+enter password
+
+# 2. check the if you have conda envirionment
+```conda env list```
+probably you do not have one
+install one
+
+# 3. download & install qtlseq qithub pipeline
+```
 conda install -c bioconda qtlseq
+```
 did not work out, check all the env
 
+```
 conda env list
 
 remove all env
@@ -26,16 +37,19 @@ conda deactivate
 conda env remove -n base
 conda activate mamba
 conda env list
+```
+try now again
 
-try now---
-
+```
 conda install -c bioconda qtlseq
 conda install -p "/sw/apps/bioinfo/qiime2/2018.11.0/rackham/conda" "conda>=22.9"
 conda env list
 conda create -n qtlseq python=3 qtlseq
-did not worked
+```
+did not worked, may install manually
 
-   3. Git clone
+# 3. Git clone
+```
 git clone https://github.com/YuSugihara/QTL-seq.git
 cd QTL-seq
 pip install -e .
@@ -49,12 +63,13 @@ qtlseq -h
 ll
 qtlseq
 
- cd QTL-seq
+cd QTL-seq
 
- qtlseq -h 
+qtlseq -h 
+```
+transfer snpseq raw files or qtlseq raw reads to  PDC dardel to make it safe:
 
-  transfer snpseq or qtlseq to  PDC dardel
-  
+```
 less darsync_vinitha.out
 cat darsync_vinitha.slurm
 ll /proj/snic2021-23-442/delivery05638
@@ -163,13 +178,14 @@ du -sh snpseq/
 
 qtlseq
 
- ml bioinfo-tools snpEff
+ml bioinfo-tools snpEff
  
- nano qtlseq_transfer.sh
+nano qtlseq_transfer.sh
+```
+# 4. test run
 
- 4. test run
-
- cd /proj/uppstore2018171/abu/vinitha_qtl/
+```
+cd /proj/uppstore2018171/abu/vinitha_qtl/
  
 mkdir test_run
 test_run/
@@ -186,8 +202,9 @@ nano  QTL-seq/test/qtlseq_test1.sh
 ll QTL-seq/test/
 ll-h  QTL-seq/test/
 ll -h QTL-seq/test/
-
-qtlseq
+```
+## run 1
+```
 nano  QTL-seq/test/qtlseq_test1.sh 
 cd QTL-seq/test/
 
@@ -207,9 +224,9 @@ sbatch qtlseq_test1.sh
 jobinfo -u abusiddi
 
 cat qtlseq_r2.err
-
-# error, test run finished unsuccessfully, now run again
-
+```
+#### error, test run finished unsuccessfully, now run again
+```
 rm -r test_1
 
 sbatch qtlseq_test1.sh
@@ -217,9 +234,9 @@ cat qtlseq_r1.out
 
 tree test_1/
 jobinfo -u abusiddi
-
-# error, run again
-
+```
+#### error, run again
+```
 rm -r test_1
 nano qtlseq_test1.sh 
 sbatch qtlseq_test1.sh
@@ -245,44 +262,49 @@ jobinfo -u abusiddi
 
 less qtlseq_run2.err
 less qtlseq_run2.out
-2  less qtlseq_run1.out
-# run successfully, now real run with SB genome, download the genome files  
-
-893  gzip -dk Phytozome/PhytozomeV13/Bvulgarisssp_vulgaris/EL10.2_2/assembly/Bvulgarisssp_vulgaris_782_EL10.2.fa.gz 
-  894  gzip -d -k Phytozome/PhytozomeV13/Bvulgarisssp_vulgaris/EL10.2_2/assembly/Bvulgarisssp_vulgaris_782_EL10.2.fa.gz
-  895  gzip -dk Phytozome/PhytozomeV13/Bvulgarisssp_vulgaris/EL10.2_2/assembly/Bvulgarisssp_vulgaris_782_EL10.2.fa.gz .
-  896  cp Phytozome/PhytozomeV13/Bvulgarisssp_vulgaris/EL10.2_2/assembly/Bvulgarisssp_vulgaris_782_EL10.2.fa.gz .
-  897  ll
-  898  ll -h
-  899  gunzip Bvulgarisssp_vulgaris_782_EL10.2.fa.gz
-  900  ll
-  901  ll -h
-
-  # run sbatch
-
-  903  sbatch qtlseq_run2.sh
-  904  jobinfo -u abusiddi
-  906  ll qtlseq_analysis_run_2
-  907  jobinfo -u abusiddi
-  908  ll qtlseq_analysis_run_2
-  909  tree qtlseq_analysis_run_2
-  911  less qtlseq_run2.err
-  914  sbatch qtlseq_run3.sh
-
+less qtlseq_run1.out
+```
+#### run successfully, now real run with SB genome `EL10_2.2`, download the genome files  
+```
+gzip -dk Phytozome/PhytozomeV13/Bvulgarisssp_vulgaris/EL10.2_2/assembly/Bvulgarisssp_vulgaris_782_EL10.2.fa.gz 
+gzip -d -k Phytozome/PhytozomeV13/Bvulgarisssp_vulgaris/EL10.2_2/assembly/Bvulgarisssp_vulgaris_782_EL10.2.fa.gz
+gzip -dk Phytozome/PhytozomeV13/Bvulgarisssp_vulgaris/EL10.2_2/assembly/Bvulgarisssp_vulgaris_782_EL10.2.fa.gz .
+cp Phytozome/PhytozomeV13/Bvulgarisssp_vulgaris/EL10.2_2/assembly/Bvulgarisssp_vulgaris_782_EL10.2.fa.gz .
+ll -h
+gunzip Bvulgarisssp_vulgaris_782_EL10.2.fa.gz
+ll
+ll -h
+```
+## run 2 & 3 
+```
 cd /proj/uppstore2018171/abu/vinitha_qtl/
 
 mkdir qtlseq_analysis
 cd qtlseq_analysis/
 
-Download the SB genome from phytozome website
+sbatch qtlseq_run2.sh
+jobinfo -u abusiddi
+ll qtlseq_analysis_run_2
+jobinfo -u abusiddi
+ll qtlseq_analysis_run_2
+tree qtlseq_analysis_run_2
+less qtlseq_run2.err
+sbatch qtlseq_run3.sh
+```
 
+
+Download the SB genome from phytozome website
+```
 curl --cookie jgi_session=/api/sessions/07018f619c8c3de104b2e2c974653a90 --output download.20240520.130135.zip -d "{\"ids\":{\"Phytozome-782\":[\"6334df862de7c323533ed952\",\"6334df862de7c323533ed95c\",\"6334df862de7c323533ed956\",\"6334df872de7c323533ed970\",\"6334df872de7c323533ed96a\",\"6334df872de7c323533ed962\",\"6334df872de7c323533ed96c\",\"6334df862de7c323533ed95e\",\"6334df862de7c323533ed954\",\"6334df862de7c323533ed95a\",\"6334df872de7c323533ed966\",\"6334df872de7c323533ed968\",\"6334df862de7c323533ed958\",\"6334df872de7c323533ed964\",\"6334df872de7c323533ed960\",\"6334df872de7c323533ed972\",\"6334df872de7c323533ed96e\",\"6334df862de7c323533ed950\"]}}" -H "Content-Type: application/json" https://files-download.jgi.doe.gov/filedownload/
 
 ll
 unzip download.20240520.130135.zip
 ll
 tree Phytozome/
-cd qtlseq_analysis/
+```
+## run 4
+```
+cd /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/
 sbatch qtlseq_run4.sh 
 less /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_run4.err 
 less /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_run4.out 
@@ -291,8 +313,23 @@ cat /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_analysis_run_4/
 tree /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_analysis_run_4/
 ll -h /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_analysis_run_4/00_fastq/
 
+```
+future run with `--species Arabidopsis` to see if it works & `--mem ` option to run faster
 
-future run with `--species Arabidopsis` & `--mem ` option 
+## run5
 
 
+run `qtlseq_run5.sh` shown `shell_script` directory
 
+```
+cd /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis
+
+sbatch qtlseq_run5.sh
+```
+to check the results:
+```
+tree /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_analysis_run_5
+```
+
+It is finished successfully, now do seat with your `qtlseq` results and evaluate:
+`/proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_analysis_run_5/40_qtlseq`
