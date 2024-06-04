@@ -333,3 +333,23 @@ tree /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_analysis_run_5
 
 It is finished successfully, now do seat with your `qtlseq` results and evaluate:
 `/proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_analysis_run_5/40_qtlseq`
+
+
+# 2024-06-04
+we added snpindex >4, increased hight and width of the figures, slide window etc
+
+qtlplot -v /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_analysis_run_5/30_vcf/qtlseq.vcf.gz \
+        -o qtlseq_analysis_run_6 \
+        -n1 30 \
+        -n2 30 \
+        -w 2000 \
+        -s 100 \
+        -t 2 \
+        -m 0.4 \
+        --igv \
+        --fig-width 15 \
+        --fig-height 8.0  
+
+cd /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/
+
+sbtach qtlseq_analysis_run_6.sh
