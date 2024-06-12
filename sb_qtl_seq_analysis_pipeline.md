@@ -353,3 +353,73 @@ qtlplot -v /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_analysis
 cd /proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/
 
 sbtach qtlseq_analysis_run_6.sh
+
+
+
+# 2024-06-11
+
+module load tmux
+
+tmux new -s var_nxf
+
+tmux set mouse on # enable mouse support for things like scrolling and selecting text
+
+
+
+
+1.1.3 modules needs to be loaded from HPC cluster (here it is shown for UPPMAX computer cluster )
+module load uppmax bioinfo-tools # Base UPPMAX environment modules, needed for everything else
+
+module load Nextflow # Note: Capital N!
+
+module load nf-core-pipelines/latest
+
+
+export NXF_OPTS='-Xms1g -Xmx4g'
+
+export NXF_HOME=/proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/variant_calling/
+
+export NXF_TEMP=${SNIC_TMP:-$HOME/glob/nxftmp}
+
+
+
+```
+{
+    "input": "\/proj\/uppstore2018171\/abu\/vinitha_qtl\/qtlseq_analysis\/variant_calling\/samplesheet.csv",
+    "outdir": "\/proj\/uppstore2018171\/abu\/vinitha_qtl\/qtlseq_analysis\/variant_calling\/results\/",
+    "trim_fastq": true,
+    "save_mapped": true,
+    "save_output_as_bam": true,
+    "fasta": "\/proj\/uppstore2018171\/abu\/vinitha_qtl\/qtlseq_analysis\/qtlseq_analysis_run_5\/10_ref\/Bvulgarisssp_vulgaris_782_EL10.2.fa",
+    "fasta_fai": "\/proj\/uppstore2018171\/abu\/vinitha_qtl\/qtlseq_analysis\/qtlseq_analysis_run_5\/10_ref\/Bvulgarisssp_vulgaris_782_EL10.2.fa.fai",
+    "snpeff_genome": "Beta_vulgaris",
+    "save_reference": true,
+    "download_cache": true,
+    "email": "abu.siddique@slu.se",
+    "multiqc_title": "multiqc_sugarbeet_qtlseq_var_calling"
+}
+```
+
+```
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v1.json -profile uppmax --project naiss2023-22-1096 -bg > log_1.txt
+
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v1.json -profile uppmax --project naiss2023-22-1096 -bg -resume > log_2.txt
+
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v1.json -profile uppmax --project naiss2023-22-1096 -bg -resume > log_3.txt
+
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v1.json -profile uppmax --project naiss2023-22-1096 -bg -resume > log_4.txt
+
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v1.json -profile uppmax --project naiss2023-22-1096 -bg -resume --skip_tools baserecalibrator > log_5.txt
+
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v1.json -profile uppmax --project naiss2023-22-1096 -bg -resume --skip_tools baserecalibrator > log_6.txt
+
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v1.json -profile uppmax --project naiss2023-22-1096 -bg -resume --skip_tools baserecalibrator --max_cpu 20 --max_memory "128GB" > log_7.txt
+
+```
+
+nextflow run nf-core/sarek --outdir results --outdir_cache ./own_cache --tools vep,snpeff --download_cache --build_only_index --input false
+
+
+
+
+
