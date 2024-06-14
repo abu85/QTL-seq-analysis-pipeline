@@ -417,6 +417,37 @@ nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v1.json -profile uppm
 
 ```
 
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v1.json -profile uppmax --project naiss2023-22-1096 -bg -resume --skip_tools baserecalibrator --clusterOptions '-C mem256GB -p node' --max_memory 256GB > log_8.txt
+
+
+{
+    "input": "\/proj\/uppstore2018171\/abu\/vinitha_qtl\/qtlseq_analysis\/variant_calling\/samplesheet.csv",
+    "outdir": "\/proj\/uppstore2018171\/abu\/vinitha_qtl\/qtlseq_analysis\/variant_calling\/results\/",
+    "tools": "haplotypecaller,mpileup,strelka,snpeff,vep",
+    "trim_fastq": true,
+    "save_mapped": true,
+    "save_output_as_bam": true,
+    "fasta": "\/proj\/uppstore2018171\/abu\/vinitha_qtl\/qtlseq_analysis\/qtlseq_analysis_run_5\/10_ref\/Bvulgarisssp_vulgaris_782_EL10.2.fa",
+    "fasta_fai": "\/proj\/uppstore2018171\/abu\/vinitha_qtl\/qtlseq_analysis\/qtlseq_analysis_run_5\/10_ref\/Bvulgarisssp_vulgaris_782_EL10.2.fa.fai",
+    "snpeff_genome": "Beta_vulgaris",
+    "save_reference": true,
+    "download_cache": true,
+    "email": "abu.siddique@slu.se",
+    "multiqc_title": "multiqc_sugarbeet_qtlseq_var_calling"
+}
+
+
+
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v2.json -profile uppmax --project naiss2023-22-1096 -bg -resume --skip_tools baserecalibrator --clusterOptions --max_cpu 20 --max_memory "128GB" > log_9.txt
+
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v2.json -profile uppmax --project naiss2023-22-1096 -bg -resume --skip_tools baserecalibrator --max_cpu 20 --max_memory "128GB" > log_10.txt
+
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v2.json -profile uppmax --project naiss2023-22-1096 -bg -resume --skip_tools baserecalibrator --max_cpu 20 --max_memory "128GB" --aligner bwa-mem2 > log_11.txt
+
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v3.json -profile uppmax --project naiss2023-22-1096 -bg -resume --skip_tools baserecalibrator --max_cpu 20 --max_memory "128GB" --aligner bwa-mem2 > log_12.txt
+
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v3.json -profile uppmax --project naiss2023-22-1096 -bg -resume --skip_tools baserecalibrator --max_cpu 20 --max_memory "128GB" --aligner bwa-mem2 > log_13.txt
+
 nextflow run nf-core/sarek --outdir results --outdir_cache ./own_cache --tools vep,snpeff --download_cache --build_only_index --input false
 
 
