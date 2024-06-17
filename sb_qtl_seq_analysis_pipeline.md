@@ -457,7 +457,11 @@ try with new json: remove snpeff and vep
 ```
 nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v4.json -profile uppmax --project naiss2023-22-1096 -bg -resume --skip_tools baserecalibrator --max_cpu 20 --max_memory "128GB" --aligner bwa-mem2 > log_14.txt
 ```
+no, problem exist with mem2
 
+```
+nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v5.json -profile uppmax --project naiss2023-22-1096 -bg -resume --skip_tools baserecalibrator --max_cpu 20 --max_memory "128GB" > log_15.txt
+```
 
 
 
