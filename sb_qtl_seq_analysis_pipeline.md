@@ -464,6 +464,12 @@ nextflow run nf-core/sarek -r 3.4.2 -params-file nf-params_v5.json -profile uppm
 ```
 
 
+## 2024-06-18
+I am changing the parameter to see minimum snp > 0.6 and > 0.7
+the orginal file i saved here as back up
+`/proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/snp_filt.py`
+
+the cnaging file is here `/home/abusiddi/QTL-seq/qtlseq/snpfilt.py` line 87-88
 
 
 nextflow run nf-core/sarek --outdir results --outdir_cache ./own_cache --tools vep,snpeff --download_cache --build_only_index --input false
