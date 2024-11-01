@@ -10,7 +10,7 @@
 
 # Load necessary modules
 ml bioinfo-tools samtools BEDTools
-
+# 3) samtools/1.20   4) BEDTools/2.31.1
 # Define variables
 BAM_FILES=(
     "/proj/uppstore2018171/abu/vinitha_qtl/qtlseq_analysis/qtlseq_analysis_run_5/20_bam/bulk1.bam"
